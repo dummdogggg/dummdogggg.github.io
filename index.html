@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .btn-class-name {
+            --primary: 255, 90, 120;
+            --secondary: 150, 50, 60;
+            width: 60px;
+            height: 50px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            user-select: none;
+            touch-action: manipulation;
+            outline: 10px solid rgb(var(--primary), .5);
+            border-radius: 100%;
+            position: relative;
+            transition: .3s;
+        }
+
+        .btn-class-name .back {
+            background: rgb(var(--secondary));
+            border-radius: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-class-name .front {
+            background: linear-gradient(0deg, rgba(var(--primary), .6) 20%, rgba(var(--primary)) 50%);
+            box-shadow: 0 .5em 1em -0.2em rgba(var(--secondary), .5);
+            border-radius: 100%;
+            position: absolute;
+            border: 1px solid rgb(var(--secondary));
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: inherit;
+            transform: translateY(-15%);
+            transition: .15s;
+            color: rgb(var(--secondary));
+        }
+
+        .btn-class-name:active .front {
+            transform: translateY(0%);
+            box-shadow: 0 0;
+        }
+
+        #result {
+            font-size: 20px;
+            color: #007BFF;
+            margin-top: 10px;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wave-group {
+  position: relative;
+}
+
+.wave-group .input {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid #515151;
+  background: transparent;
+}
+
+.wave-group .input:focus {
+  outline: none;
+}
+
+.wave-group .label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  display: flex;
+}
+
+.wave-group .label-char {
+  transition: 0.2s ease all;
+  transition-delay: calc(var(--index) * .05s);
+}
+
+.wave-group .input:focus ~ label .label-char,
+.wave-group .input:valid ~ label .label-char {
+  transform: translateY(-20px);
+  font-size: 14px;
+  color: #5264AE;
+}
+
+.wave-group .bar {
+  position: relative;
+  display: block;
+  width: 200px;
+}
+
+.wave-group .bar:before,.wave-group .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264AE;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.wave-group .bar:before {
+  left: 50%;
+}
+
+.wave-group .bar:after {
+  right: 50%;
+}
+
+.wave-group .input:focus ~ .bar:before,
+.wave-group .input:focus ~ .bar:after {
+  width: 50%;
+}
+
+    </style>
+</head>
+<body>
+    <body>
+        <div class="game-container">
+            <h1>Guess the Number</h1>
+            <div class="wave-group">
+                <input required="" type="number" id="guess" class="input">
+                <span class="bar"></span>
+                <label class="label">
+                  <span class="label-char" style="--index: 0">N</span>
+                  <span class="label-char" style="--index: 1">u</span>
+                  <span class="label-char" style="--index: 2">m</span>
+                  <span class="label-char" style="--index: 3">b</span>
+                  <span class="label-char" style="--index: 4">e</span>
+                  <span class="label-char" style="--index: 5">r</span>
+                </label>
+              </div>
+            <button class="btn-class-name" onclick="checkGuess()">
+                <span class="back"></span>
+                <span class="front"></span>
+            </button>
+            <p id="result"></p>
+        </div>
+
+    <script>
+        const targetNumber = 300;
+
+        function checkGuess() {
+            const guess = document.getElementById('guess').value;
+            const result = document.getElementById('result');
+
+            if (guess < targetNumber) {
+                result.textContent = 'Higher!';
+            } else if (guess > targetNumber) {
+                result.textContent = 'Lower!';
+            } else {
+                result.textContent = 'Congratulations! Z300';
+            }
+        }
+    </script>
+</body>
+</html>
