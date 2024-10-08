@@ -5,7 +5,7 @@
 <head>
 	<style type="text/css">
 		:root {
-			/* replace 'img_url' with your animated image or regular image link */
+			/* Background image URL (change as needed) */
 			--url: url("https://img.freepik.com/free-photo/abstract-luxury-soft-red-background-christmas-valentines-layout-designstudioroom-web-template-business-report-with-smooth-circle-gradient-color_1258-102209.jpg?t=st=1728391638~exp=1728395238~hmac=e5379636c973491fbf28dd0f1a318c7ecb7fdf9f5729e7a5f027279d1e1dde96&w=740");
 		}
 
@@ -21,6 +21,7 @@
 			color: white;
 		}
 
+		/* Background image setup */
 		.margin:first-child {
 			background-image: var(--url);
 			background-size: cover;
@@ -28,18 +29,30 @@
 			background-attachment: fixed;
 		}
 
+		/* Translucent effect with blur to simulate Mica */
 		.lines-content:nth-of-type(1),
 		.monaco-editor-background:nth-of-type(1) {
+			background-color: rgba(255, 255, 255, 0.1); /* Slight translucency */
+			backdrop-filter: blur(10px); /* Blur to simulate Mica effect */
+			-webkit-backdrop-filter: blur(10px); /* For Safari */
 			background-image: var(--url);
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-attachment: fixed;
 		}
+
+		/* For a glass-like effect */
+		.editor-container {
+			background: rgba(255, 255, 255, 0.08); /* Transparent white */
+			border-radius: 10px;
+			backdrop-filter: blur(15px); /* Stronger blur */
+			-webkit-backdrop-filter: blur(15px); /* Safari support */
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+		}
 	</style>
 	<meta charset="utf-8" />
-	<title></title>
+	<title>Mica Effect Simulation</title>
 </head>
-
 <body>
 	<div id="container" style="width:100%;height:100%;"></div>
 	<script src="vs/loader.js"></script>
